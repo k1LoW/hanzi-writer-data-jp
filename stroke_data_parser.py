@@ -5,6 +5,7 @@ from copy import copy
 root = os.path.dirname(__file__)
 dictionary_file = os.path.join(root, 'vendor/animCJK/dictionaryJa.txt')
 graphics_file = os.path.join(root, 'vendor/animCJK/graphicsJa.txt')
+graphics_kana_file = os.path.join(root, 'vendor/animCJK/graphicsJaKana.txt')
 output_dir = os.path.join(root, 'data')
 
 positioners = {
@@ -32,13 +33,14 @@ with open(dictionary_file) as f:
         decoded_line = json.loads(line)
         dict_data[decoded_line['character']] = decoded_line
 
-with open(graphics_file) as f:
-    lines = f.readlines()
-    for line in lines:
-        # Fixing a weird issue with the JSON in 抽
-        decoded_line = json.loads(line.replace('[C,', '['))
-        char = decoded_line.pop('character')
-        graphics_data[char] = decoded_line
+for gfx_file in [graphics_file, graphics_kana_file]:
+    with open(gfx_file) as f:
+        lines = f.readlines()
+        for line in lines:
+            # Fixing a weird issue with the JSON in 抽
+            decoded_line = json.loads(line.replace('[C,', '['))
+            char = decoded_line.pop('character')
+            graphics_data[char] = decoded_line
 
 
 def get_decomp_index(char, subchar):
