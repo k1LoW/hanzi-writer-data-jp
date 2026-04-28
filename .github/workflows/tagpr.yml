@@ -22,7 +22,7 @@ jobs:
           node-version: 22
       - run: npm install
       - id: run-tagpr
-        uses: Songmu/tagpr@37f4e4d9bd6867ca09f10dbb6195bae27188098a # v1.18.3
+        uses: Songmu/tagpr@9bbb945b2fb025126186661e27d55485e3fc6df6 # v1.18.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
