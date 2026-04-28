@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Fork of [chanind/hanzi-writer-data-jp](https://github.com/chanind/hanzi-writer-data-jp). Provides Japanese character stroke data (SVG paths + median points) for the [Hanzi Writer](https://github.com/chanind/hanzi-writer) library. Published as `@k1low/hanzi-writer-data-jp` on npm and served via jsdelivr CDN.
+Fork of [chanind/hanzi-writer-data-jp](https://github.com/chanind/hanzi-writer-data-jp). Provides Japanese character stroke data (SVG paths + median points) for the [Hanzi Writer](https://github.com/chanind/hanzi-writer) library. Published as `@k1low/hanzi-writer-data-jp` on npm and served via unpkg CDN.
 
 ## Architecture
 
@@ -13,13 +13,14 @@ Fork of [chanind/hanzi-writer-data-jp](https://github.com/chanind/hanzi-writer-d
 ```
 vendor/animCJK (git submodule, parsimonhi/animCJK)
   ├── dictionaryJa.txt (character decomposition)
-  └── graphicsJa.txt (stroke paths + medians)
+  ├── graphicsJa.txt (kanji stroke paths + medians)
+  └── graphicsJaKana.txt (hiragana/katakana stroke paths + medians)
         │
         ▼
   stroke_data_parser.py
         │
         ▼
-  data/*.json (one file per character, ~2,942 files)
+  data/*.json (one file per character)
   data/all.json (aggregated)
 ```
 
@@ -38,15 +39,19 @@ vendor/animCJK (git submodule, parsimonhi/animCJK)
 }
 ```
 
+### Demo page
+
+`demo/index.html` is a self-contained HTML page using Hanzi Writer + this package's data via unpkg CDN. Deployed to GitHub Pages via `.github/workflows/pages.yml`.
+
 ## Commands
 
-- `python stroke_data_parser.py` - Regenerate data/ from vendor/animCJK
+- `python3 stroke_data_parser.py` - Regenerate data/ from vendor/animCJK
 - `npm run serve` - Start local http-server for development
 - `git submodule update --init` - Initialize the animCJK submodule in vendor/
 
 ## Release
 
-Automated via [Songmu/tagpr](https://github.com/Songmu/tagpr). Pushing to main triggers tagpr to create a release PR. Merging that PR creates a git tag + GitHub Release, which triggers `npm publish --access public`. Requires `NPM_TOKEN` secret in repo settings.
+Automated via [Songmu/tagpr](https://github.com/Songmu/tagpr). Pushing to main triggers tagpr to create a release PR. Merging that PR creates a git tag + GitHub Release, which triggers `npm publish` using npm Trusted Publishing (OIDC).
 
 ## Licenses
 
