@@ -1,9 +1,10 @@
 # Hanzi Writer Japanese Data
 
+This is a fork of [chanind/hanzi-writer-data-jp](https://github.com/chanind/hanzi-writer-data-jp).
+
 ## About
 
 This is the character data used by [Hanzi Writer](https://github.com/chanind/hanzi-writer) for Japanese.
-**NOTE: This is currently experimental**
 
 This data is published in a separate repo from Hanzi Writer for the following reasons:
 - This data is licensed separately from the Hanzi Writer source code.
