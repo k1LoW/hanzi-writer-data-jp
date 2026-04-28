@@ -13,6 +13,10 @@ This data is published in a separate repo from Hanzi Writer for the following re
 
 Check out [chanind.github.io/hanzi-writer](https://chanind.github.io/hanzi-writer) for more info about Hanzi Writer.
 
+## Demo
+
+https://k1low.github.io/hanzi-writer-data-jp/
+
 ## Usage
 Until this is supported directly in Hanzi Writer, you'll need to use a custom `charDataLoader` function to use this data in Hanzi Writer. An example of how you can do that using `fetch` and the content on unpkg is shown below:
 
