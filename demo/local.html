@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hanzi-writer-data-jp Demo (Local)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      background: #fafafa;
+      color: #333;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .badge {
+      font-size: 0.75rem;
+      background: #e0f0ff;
+      color: #0066cc;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+    }
+    .controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .char-input {
+      font-size: 1.5rem;
+      width: 3rem;
+      text-align: center;
+      padding: 0.25rem;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+    }
+    button:hover { background: #f0f0f0; }
+    #writer-target {
+      border: 1px solid #ddd;
+      background: #fff;
+    }
+    .error {
+      color: #c00;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      min-height: 1.2rem;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #999;
+    }
+    footer a { color: #666; }
+  </style>
+</head>
+<body>
+  <h1>hanzi-writer-data-jp Demo</h1>
+  <div class="badge">Local data</div>
+  <div class="controls">
+    <input type="text" class="char-input" id="char-input" value="あ" maxlength="1">
+    <button id="btn-update">Update</button>
+    <button id="btn-animate">Animate</button>
+    <button id="btn-loop">Loop</button>
+    <button id="btn-quiz">Quiz</button>
+    <button id="btn-reset">Reset</button>
+  </div>
+  <div id="writer-target"></div>
+  <div class="error" id="error"></div>
+  <footer>
+    Data: <a href="https://github.com/k1LoW/hanzi-writer-data-jp">@k1low/hanzi-writer-data-jp</a>
+    / Powered by <a href="https://github.com/chanind/hanzi-writer">Hanzi Writer</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7/dist/hanzi-writer.min.js"></script>
+  <script>
+    var writer = null;
+    var currentChar = document.getElementById('char-input').value;
+
+    function getDataUrl(char) {
+      return '../data/' + char + '.json';
+    }
+
+    function createWriter(char) {
+      document.getElementById('error').textContent = '';
+      document.getElementById('writer-target').innerHTML = '';
+      currentChar = char;
+
+      writer = HanziWriter.create('writer-target', char, {
+        width: 300,
+        height: 300,
+        padding: 20,
+        showOutline: true,
+        strokeAnimationSpeed: 1,
+        delayBetweenStrokes: 300,
+        charDataLoader: function(c, onComplete, onError) {
+          fetch(getDataUrl(c))
+            .then(function(res) {
+              if (!res.ok) throw new Error(c + ' not found');
+              return res.json();
+            })
+            .then(onComplete)
+            .catch(function(err) {
+              document.getElementById('error').textContent = err.message;
+              if (onError) onError(err);
+            });
+        }
+      });
+    }
+
+    createWriter(currentChar);
+
+    document.getElementById('btn-update').addEventListener('click', function() {
+      var char = document.getElementById('char-input').value.trim();
+      if (char) createWriter(char);
+    });
+
+    document.getElementById('char-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        var char = this.value.trim();
+        if (char) createWriter(char);
+      }
+    });
+
+    document.getElementById('btn-animate').addEventListener('click', function() {
+      if (writer) writer.animateCharacter();
+    });
+
+    document.getElementById('btn-loop').addEventListener('click', function() {
+      if (writer) writer.loopCharacterAnimation();
+    });
+
+    document.getElementById('btn-quiz').addEventListener('click', function() {
+      if (writer) writer.quiz();
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', function() {
+      if (writer) {
+        writer.cancelQuiz();
+        writer.showCharacter();
+        writer.showOutline();
+      }
+    });
+  </script>
+</body>
+</html>

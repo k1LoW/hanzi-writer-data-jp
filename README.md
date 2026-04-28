@@ -33,6 +33,10 @@ HanziWriter.create('target-div', '私', {
 })
 ```
 
+## Notes on stroke count
+
+Some characters may have more strokes in the data than their standard stroke count. This is because the upstream [animCJK](https://github.com/parsimonhi/animCJK) project splits a single stroke into multiple paths for animation purposes (e.g., to control the drawing direction on curves). For example, 「あ」 is 3 strokes but has 4 strokes in the data. This is intentional and not a bug.
+
 ## Current limitations compared with the Chinese data
 - This data does not support radicals yet
 - This data does not have capped strokes, so there are sharp edges where strokes intersect
