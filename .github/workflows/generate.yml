@@ -26,12 +26,15 @@ jobs:
           python-version: "3.x"
 
       - name: Generate stroke data
-        run: python3 stroke_data_parser.py
+        run: |
+          rm -f data/*.json
+          python3 stroke_data_parser.py
 
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet data/; then
+          git add data/
+          if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -42,6 +45,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/
           git commit -m "chore: regenerate stroke data from vendor/animCJK"
           git push
