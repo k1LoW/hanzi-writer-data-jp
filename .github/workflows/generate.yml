@@ -1,0 +1,43 @@
+name: Generate stroke data
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - vendor/animCJK
+      - stroke_data_parser.py
+  pull_request:
+    paths:
+      - vendor/animCJK
+      - stroke_data_parser.py
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+          submodules: true
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.x"
+
+      - name: Generate stroke data
+        run: |
+          git config core.quotePath false
+          rm -f data/*.json
+          python3 stroke_data_parser.py
+
+      - name: Commit and push
+        uses: suzuki-shunsuke/commit-action@06e3b49d4706498d325d29bd85adc82ecf2f5d8f # v1.0.0
+        with:
+          commit_message: "chore: regenerate stroke data from vendor/animCJK"
+          fail_on_self_push: "false"

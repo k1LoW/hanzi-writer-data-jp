@@ -1,6 +1,6 @@
 import json
 import os
-import unicodedata
+import sys
 from copy import copy
 
 root = os.path.dirname(__file__)
@@ -41,10 +41,10 @@ for gfx_file in [graphics_file, graphics_kana_file]:
             # Fixing a weird issue with the JSON in 抽
             decoded_line = json.loads(line.replace('[C,', '['))
             char = decoded_line.pop('character')
-            # Skip CJK Compatibility Ideographs (U+F900-U+FAFF) because macOS
-            # normalizes filenames to NFC, causing these to overwrite the
-            # standard CJK Unified Ideograph entries with incorrect stroke data.
-            if len(char) == 1 and 0xF900 <= ord(char) <= 0xFAFF:
+            # On macOS, skip CJK Compatibility Ideographs (U+F900-U+FAFF)
+            # because APFS normalizes filenames via NFC, causing these to
+            # overwrite the standard CJK Unified Ideograph files.
+            if sys.platform == 'darwin' and len(char) == 1 and 0xF900 <= ord(char) <= 0xFAFF:
                 continue
             graphics_data[char] = decoded_line
 
