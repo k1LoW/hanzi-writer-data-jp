@@ -32,6 +32,7 @@ jobs:
 
       - name: Generate stroke data
         run: |
+          git config core.quotePath false
           rm -f data/*.json
           python3 stroke_data_parser.py
 
