@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.2.1](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.2.0...v0.2.1) - 2026-05-02
+### Bug Fixes
+- chore: update animNumber submodule by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/15
+
 ## [v0.2.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.1.2...v0.2.0) - 2026-05-02
 ### New Features
 - feat: add Arabic numeral (0-9) stroke data via animNumber by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/13
