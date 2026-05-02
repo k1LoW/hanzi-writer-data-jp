@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.2.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.1.2...v0.2.0) - 2026-05-02
+### New Features
+- feat: add Arabic numeral (0-9) stroke data via animNumber by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/13
+
 ## [v0.1.2](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.1.1...v0.1.2) - 2026-04-29
 ### Other Changes
 - ci: add workflow to regenerate stroke data on Linux by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/11
