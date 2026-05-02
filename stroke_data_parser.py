@@ -7,6 +7,7 @@ root = os.path.dirname(__file__)
 dictionary_file = os.path.join(root, 'vendor/animCJK/dictionaryJa.txt')
 graphics_file = os.path.join(root, 'vendor/animCJK/graphicsJa.txt')
 graphics_kana_file = os.path.join(root, 'vendor/animCJK/graphicsJaKana.txt')
+graphics_number_file = os.path.join(root, 'vendor/animNumber/graphicsNumber.txt')
 output_dir = os.path.join(root, 'data')
 
 positioners = {
@@ -34,7 +35,7 @@ with open(dictionary_file) as f:
         decoded_line = json.loads(line)
         dict_data[decoded_line['character']] = decoded_line
 
-for gfx_file in [graphics_file, graphics_kana_file]:
+for gfx_file in [graphics_file, graphics_kana_file, graphics_number_file]:
     with open(gfx_file) as f:
         lines = f.readlines()
         for line in lines:

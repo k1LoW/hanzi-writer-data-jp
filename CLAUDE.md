@@ -15,6 +15,8 @@ vendor/animCJK (git submodule, parsimonhi/animCJK)
   ├── dictionaryJa.txt (character decomposition)
   ├── graphicsJa.txt (kanji stroke paths + medians)
   └── graphicsJaKana.txt (hiragana/katakana stroke paths + medians)
+vendor/animNumber (git submodule, k1LoW/animNumber)
+  └── graphicsNumber.txt (Arabic numeral 0-9 stroke paths + medians)
         │
         ▼
   stroke_data_parser.py
@@ -59,3 +61,4 @@ Multiple licenses apply simultaneously (AND, not OR) to the data. See `licenses/
 - Arphic Public License (font-derived data)
 - LGPL v3+ (animCJK processing)
 - Unicode License (Unihan DB data)
+- SIL Open Font License 1.1 (Klee One glyph outlines, applies to Arabic numeral 0-9 data via animNumber)
