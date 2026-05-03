@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.3.1](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.3.0...v0.3.1) - 2026-05-03
+### Other Changes
+- docs: clarify full-width ０-９ are covered by OFL via animNumber by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/29
+- chore: update animNumber submodule and align full-width 0/3/6/8/9 medians by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/31
+
 ## [v0.3.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.2.6...v0.3.0) - 2026-05-03
 ### Other Changes
 - chore: update animNumber submodule and add full-width digits ０-９ by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/28
