@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.3.2](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.3.1...v0.3.2) - 2026-05-03
+### Other Changes
+- chore: update animNumber submodule and refresh full-width ３ median by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/32
+
 ## [v0.3.1](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.3.0...v0.3.1) - 2026-05-03
 ### Other Changes
 - docs: clarify full-width ０-９ are covered by OFL via animNumber by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/29
