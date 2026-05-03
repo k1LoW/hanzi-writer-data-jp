@@ -37,6 +37,10 @@ HanziWriter.create('target-div', '私', {
 
 Some characters may have more strokes in the data than their standard stroke count. This is because the upstream [animCJK](https://github.com/parsimonhi/animCJK) project splits a single stroke into multiple paths for animation purposes (e.g., to control the drawing direction on curves). For example, 「あ」 is 3 strokes but has 4 strokes in the data. This is intentional and not a bug.
 
+## Notes on regenerating data on macOS
+
+Running `python3 stroke_data_parser.py` on macOS produces a working tree diff against many CJK Compatibility Ideograph (U+F900-U+FAFF) JSON files (e.g., `data/侮.json`, `data/海.json`). This is caused by APFS NFC normalizing filenames, so `data/侮.json` (U+F9D6) collides with `data/侮.json` (U+4FAE) on disk. The parser already skips U+F900-U+FAFF entries on macOS to avoid corrupting the Unified Ideograph files, but the existing CI-generated U+F900-U+FAFF files in the repo still appear "modified" locally. These diffs are spurious and should not be committed; only CI on Linux can regenerate them correctly.
+
 ## Current limitations compared with the Chinese data
 - This data does not support radicals yet
 - This data does not have capped strokes, so there are sharp edges where strokes intersect

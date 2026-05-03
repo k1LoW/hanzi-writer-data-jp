@@ -51,6 +51,10 @@ vendor/animNumber (git submodule, k1LoW/animNumber)
 - `npm run serve` - Start local http-server for development
 - `git submodule update --init` - Initialize the animCJK submodule in vendor/
 
+## macOS / APFS caveat
+
+APFS NFC-normalizes filenames, so CJK Compatibility Ideographs (U+F900-U+FAFF) collide with their canonical Unified Ideograph counterparts (e.g., 侮 U+F9D6 vs U+4FAE) on disk. `stroke_data_parser.py` skips U+F900-U+FAFF entries on macOS to avoid overwriting the canonical files, but the CI-generated U+F900-U+FAFF files committed to the repo still appear as "modified" in `git status` after a local regeneration. **These local diffs against `data/<U+F900-U+FAFF>.json` files are spurious — never stage or commit them.** Only CI on Linux can regenerate them correctly. When opening a PR after a local parser run, stage only the digit/character JSON files you actually intended to change (e.g., `data/0.json`, `data/all.json`).
+
 ## Release
 
 Automated via [Songmu/tagpr](https://github.com/Songmu/tagpr). Pushing to main triggers tagpr to create a release PR. Merging that PR creates a git tag + GitHub Release, which triggers `npm publish` using npm Trusted Publishing (OIDC).
