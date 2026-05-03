@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.2.4](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.2.3...v0.2.4) - 2026-05-03
+### Other Changes
+- chore: update animNumber submodule by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/21
+
 ## [v0.2.3](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.2.2...v0.2.3) - 2026-05-02
 ### Other Changes
 - chore: update animNumber submodule by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/19
