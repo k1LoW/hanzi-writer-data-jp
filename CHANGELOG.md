@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.3.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.2.6...v0.3.0) - 2026-05-03
+### Other Changes
+- chore: update animNumber submodule and add full-width digits ０-９ by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/28
+
 ## [v0.2.6](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.2.5...v0.2.6) - 2026-05-03
 ### Other Changes
 - chore: update animNumber submodule by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/25
