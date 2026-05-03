@@ -56,4 +56,4 @@ either version 3 of the license, or (at your option) any later version. You
 should have received a copy of this license (the file "LGPL.txt") along with
 these files; if not, see <http://www.gnu.org/licenses/>.
 
-Arabic numeral data (0-9) is derived from [animNumber](https://github.com/k1LoW/animNumber), whose glyph outlines are derived and modified from [Klee One Regular](https://fonts.google.com/specimen/Klee+One) by Fontworks Inc. Klee One is licensed under the [SIL Open Font License, Version 1.1](licenses/OFL.txt).
+Arabic numeral data (half-width 0-9 and full-width ０-９) is derived from [animNumber](https://github.com/k1LoW/animNumber), whose glyph outlines are derived and modified from [Klee One Regular](https://fonts.google.com/specimen/Klee+One) by Fontworks Inc. Klee One is licensed under the [SIL Open Font License, Version 1.1](licenses/OFL.txt).

@@ -65,4 +65,4 @@ Multiple licenses apply simultaneously (AND, not OR) to the data. See `licenses/
 - Arphic Public License (font-derived data)
 - LGPL v3+ (animCJK processing)
 - Unicode License (Unihan DB data)
-- SIL Open Font License 1.1 (Klee One glyph outlines, applies to Arabic numeral 0-9 data via animNumber)
+- SIL Open Font License 1.1 (Klee One glyph outlines, applies to Arabic numeral 0-9 and full-width ０-９ data via animNumber)
