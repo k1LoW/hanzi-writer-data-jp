@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.4.4](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.3...v0.4.4) - 2026-05-04
+### Other Changes
+- chore: update animNumber submodule with extended 8/８ median start by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/46
+
 ## [v0.4.3](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.2...v0.4.3) - 2026-05-04
 ### Other Changes
 - docs: document animNumber scaling in README and CLAUDE.md by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/44
