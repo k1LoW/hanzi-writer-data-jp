@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.4.1](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.0...v0.4.1) - 2026-05-04
+### Other Changes
+- fix: anchor animNumber scale at digit bottom so digits align with animCJK character bottom by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/40
+
 ## [v0.4.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.3.4...v0.4.0) - 2026-05-04
 ### Other Changes
 - feat: scale animNumber digits ×1.4 to match animCJK character size by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/38
