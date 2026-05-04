@@ -16,7 +16,7 @@ output_dir = os.path.join(root, 'data')
 # closer to animCJK character size. X is scaled around the canvas x-center; Y
 # is scaled around the digit's natural bottom (y=62 in animNumber data) so the
 # scaled bottom lands at animCJK's typical character bottom (y≈1).
-NUMBER_SCALE = 1.4
+NUMBER_SCALE = 1.25
 NUMBER_ORIGIN_X = 512
 NUMBER_BOTTOM_SOURCE = 62
 NUMBER_BOTTOM_TARGET = 1
