@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.4.2](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.1...v0.4.2) - 2026-05-04
+### Other Changes
+- fix: lower NUMBER_SCALE from 1.4 to 1.25 for closer visual balance with kanji by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/42
+
 ## [v0.4.1](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.0...v0.4.1) - 2026-05-04
 ### Other Changes
 - fix: anchor animNumber scale at digit bottom so digits align with animCJK character bottom by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/40
