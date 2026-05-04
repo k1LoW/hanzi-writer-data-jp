@@ -16,15 +16,25 @@ vendor/animCJK (git submodule, parsimonhi/animCJK)
   ├── graphicsJa.txt (kanji stroke paths + medians)
   └── graphicsJaKana.txt (hiragana/katakana stroke paths + medians)
 vendor/animNumber (git submodule, k1LoW/animNumber)
-  └── graphicsNumber.txt (Arabic numeral 0-9 stroke paths + medians)
+  └── graphicsNumber.txt (Arabic numeral 0-9 and full-width ０-９ stroke paths + medians)
         │
         ▼
-  stroke_data_parser.py
+  stroke_data_parser.py  (animNumber entries are uniformly scaled, see "animNumber scaling")
         │
         ▼
   data/*.json (one file per character)
   data/all.json (aggregated)
 ```
+
+### animNumber scaling
+
+`stroke_data_parser.py` applies a uniform affine transform to every entry loaded from `vendor/animNumber/graphicsNumber.txt` so digits visually match animCJK kanji within the shared 1024×1024 viewBox. X is scaled around the canvas x-center; Y is scaled around the digit's natural bottom (y=62 in animNumber data) so the scaled bottom lands at animCJK's typical character bottom (y≈1).
+
+- `NUMBER_SCALE = 1.25` (digit height ≈ 91% of `漢`)
+- `NUMBER_ORIGIN_X = 512`
+- `NUMBER_BOTTOM_SOURCE = 62`, `NUMBER_BOTTOM_TARGET = 1`
+
+The transform is applied to both `strokes` (SVG path numbers) and `medians` (point lists), so they stay in lockstep.
 
 ### npm publish flow
 
