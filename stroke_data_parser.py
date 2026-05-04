@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import sys
 from copy import copy
 
@@ -9,6 +10,47 @@ graphics_file = os.path.join(root, 'vendor/animCJK/graphicsJa.txt')
 graphics_kana_file = os.path.join(root, 'vendor/animCJK/graphicsJaKana.txt')
 graphics_number_file = os.path.join(root, 'vendor/animNumber/graphicsNumber.txt')
 output_dir = os.path.join(root, 'data')
+
+# animNumber digits are smaller than animCJK kanji within the shared 1024×1024
+# viewBox, so scale every animNumber entry uniformly to bring full-width ０-９
+# closer to animCJK character size. Scaling is anchored at the canvas x-center
+# and at animNumber's documented baseline (animCJK source y=76).
+NUMBER_SCALE = 1.4
+NUMBER_ORIGIN_X = 512
+NUMBER_ORIGIN_Y = 76
+
+PATH_CMD_SPLIT_RE = re.compile(r'([MLCQZ])')
+PATH_NUM_RE = re.compile(r'-?\d+(?:\.\d+)?')
+
+
+def scale_point(x, y):
+    nx = (x - NUMBER_ORIGIN_X) * NUMBER_SCALE + NUMBER_ORIGIN_X
+    ny = (y - NUMBER_ORIGIN_Y) * NUMBER_SCALE + NUMBER_ORIGIN_Y
+    return round(nx), round(ny)
+
+
+def scale_path(path):
+    out = []
+    for piece in PATH_CMD_SPLIT_RE.split(path):
+        if piece in ('M', 'L', 'C', 'Q', 'Z'):
+            out.append(piece)
+            continue
+        nums = PATH_NUM_RE.findall(piece)
+        pairs = []
+        for i in range(0, len(nums) - 1, 2):
+            nx, ny = scale_point(float(nums[i]), float(nums[i + 1]))
+            pairs.append(f'{nx} {ny}')
+        out.append(' '.join(pairs))
+    return ''.join(out)
+
+
+def scale_animnumber_entry(entry):
+    entry['strokes'] = [scale_path(s) for s in entry['strokes']]
+    entry['medians'] = [
+        [list(scale_point(p[0], p[1])) for p in stroke]
+        for stroke in entry['medians']
+    ]
+    return entry
 
 positioners = {
     '⿰': 2,
@@ -36,6 +78,7 @@ with open(dictionary_file) as f:
         dict_data[decoded_line['character']] = decoded_line
 
 for gfx_file in [graphics_file, graphics_kana_file, graphics_number_file]:
+    is_number_file = (gfx_file == graphics_number_file)
     with open(gfx_file) as f:
         lines = f.readlines()
         for line in lines:
@@ -47,6 +90,8 @@ for gfx_file in [graphics_file, graphics_kana_file, graphics_number_file]:
             # overwrite the standard CJK Unified Ideograph files.
             if sys.platform == 'darwin' and len(char) == 1 and 0xF900 <= ord(char) <= 0xFAFF:
                 continue
+            if is_number_file:
+                decoded_line = scale_animnumber_entry(decoded_line)
             graphics_data[char] = decoded_line
 
 
