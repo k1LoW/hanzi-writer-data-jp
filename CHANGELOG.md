@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.4.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.3.4...v0.4.0) - 2026-05-04
+### Other Changes
+- feat: scale animNumber digits ×1.4 to match animCJK character size by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/38
+
 ## [v0.3.4](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.3.3...v0.3.4) - 2026-05-04
 ### Other Changes
 - chore: update animNumber submodule to simplify 1/１ outline by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/36
