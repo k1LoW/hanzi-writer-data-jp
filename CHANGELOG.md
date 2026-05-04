@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.3.4](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.3.3...v0.3.4) - 2026-05-04
+### Other Changes
+- chore: update animNumber submodule to simplify 1/１ outline by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/36
+
 ## [v0.3.3](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.3.2...v0.3.3) - 2026-05-04
 ### Other Changes
 - chore: update animNumber submodule with ３ inner-pinch hook by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/34
