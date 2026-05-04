@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.4.3](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.2...v0.4.3) - 2026-05-04
+### Other Changes
+- docs: document animNumber scaling in README and CLAUDE.md by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/44
+
 ## [v0.4.2](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.1...v0.4.2) - 2026-05-04
 ### Other Changes
 - fix: lower NUMBER_SCALE from 1.4 to 1.25 for closer visual balance with kanji by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/42
