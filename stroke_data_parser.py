@@ -13,11 +13,13 @@ output_dir = os.path.join(root, 'data')
 
 # animNumber digits are smaller than animCJK kanji within the shared 1024×1024
 # viewBox, so scale every animNumber entry uniformly to bring full-width ０-９
-# closer to animCJK character size. Scaling is anchored at the canvas x-center
-# and at animNumber's documented baseline (animCJK source y=76).
+# closer to animCJK character size. X is scaled around the canvas x-center; Y
+# is scaled around the digit's natural bottom (y=62 in animNumber data) so the
+# scaled bottom lands at animCJK's typical character bottom (y≈1).
 NUMBER_SCALE = 1.4
 NUMBER_ORIGIN_X = 512
-NUMBER_ORIGIN_Y = 76
+NUMBER_BOTTOM_SOURCE = 62
+NUMBER_BOTTOM_TARGET = 1
 
 PATH_CMD_SPLIT_RE = re.compile(r'([MLCQZ])')
 PATH_NUM_RE = re.compile(r'-?\d+(?:\.\d+)?')
@@ -25,7 +27,7 @@ PATH_NUM_RE = re.compile(r'-?\d+(?:\.\d+)?')
 
 def scale_point(x, y):
     nx = (x - NUMBER_ORIGIN_X) * NUMBER_SCALE + NUMBER_ORIGIN_X
-    ny = (y - NUMBER_ORIGIN_Y) * NUMBER_SCALE + NUMBER_ORIGIN_Y
+    ny = (y - NUMBER_BOTTOM_SOURCE) * NUMBER_SCALE + NUMBER_BOTTOM_TARGET
     return round(nx), round(ny)
 
 
