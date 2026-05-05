@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.5.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.4...v0.5.0) - 2026-05-05
+### Other Changes
+- chore: update animNumber and switch to NUMBER_SCALE=1.0 (native Klee One size) by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/48
+
 ## [v0.4.4](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.3...v0.4.4) - 2026-05-04
 ### Other Changes
 - chore: update animNumber submodule with extended 8/８ median start by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/46
