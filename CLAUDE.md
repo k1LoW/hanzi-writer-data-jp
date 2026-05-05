@@ -28,11 +28,11 @@ vendor/animNumber (git submodule, k1LoW/animNumber)
 
 ### animNumber scaling
 
-`stroke_data_parser.py` applies a uniform affine transform to every entry loaded from `vendor/animNumber/graphicsNumber.txt` so digits visually match animCJK kanji within the shared 1024×1024 viewBox. X is scaled around the canvas x-center; Y is scaled around the digit's natural bottom (y=62 in animNumber data) so the scaled bottom lands at animCJK's typical character bottom (y≈1).
+`stroke_data_parser.py` applies a uniform affine transform to every entry loaded from `vendor/animNumber/graphicsNumber.txt` so digits land at the right position within the shared 1024×1024 viewBox. animNumber now ships digits at Klee One's native size with baseline at source y=28, so `NUMBER_SCALE` is `1.0` and the transform is a pure Y translation that maps the digit's natural bottom (y=12 in animNumber data) to animCJK's typical character bottom (y≈1).
 
-- `NUMBER_SCALE = 1.25` (digit height ≈ 91% of `漢`)
+- `NUMBER_SCALE = 1.0` (digit height ≈ 86% of `漢`)
 - `NUMBER_ORIGIN_X = 512`
-- `NUMBER_BOTTOM_SOURCE = 62`, `NUMBER_BOTTOM_TARGET = 1`
+- `NUMBER_BOTTOM_SOURCE = 12`, `NUMBER_BOTTOM_TARGET = 1`
 
 The transform is applied to both `strokes` (SVG path numbers) and `medians` (point lists), so they stay in lockstep.
 

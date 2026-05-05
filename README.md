@@ -39,7 +39,7 @@ Some characters may have more strokes in the data than their standard stroke cou
 
 ## Notes on Arabic numerals
 
-Arabic numeral data (half-width 0-9 and full-width ０-９) comes from [animNumber](https://github.com/k1LoW/animNumber), whose glyphs are based on Klee One. animNumber digits are smaller than animCJK kanji within the shared 1024×1024 viewBox, so `stroke_data_parser.py` applies a uniform affine transform (`NUMBER_SCALE = 1.25`, anchored at the canvas x-center and at the digit's natural bottom y=62) to every animNumber entry. After scaling, each digit's bottom lands at y≈1 (matching `漢`) and the digit height is ≈91% of `漢`, so digits and kanji line up visually. The same transform is applied to both `strokes` and `medians`.
+Arabic numeral data (half-width 0-9 and full-width ０-９) comes from [animNumber](https://github.com/k1LoW/animNumber), whose glyphs are based on Klee One. `stroke_data_parser.py` applies a uniform affine transform (`NUMBER_SCALE = 1.0`, anchored at the canvas x-center and at the digit's natural bottom y=12) to every animNumber entry, which is effectively a Y translation that lands each digit's bottom at y≈1 (matching `漢`). The digit height is ≈86% of `漢` so digits and kanji line up visually within the shared 1024×1024 viewBox. The same transform is applied to both `strokes` and `medians`.
 
 ## Notes on regenerating data on macOS
 
