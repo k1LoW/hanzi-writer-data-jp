@@ -11,14 +11,13 @@ graphics_kana_file = os.path.join(root, 'vendor/animCJK/graphicsJaKana.txt')
 graphics_number_file = os.path.join(root, 'vendor/animNumber/graphicsNumber.txt')
 output_dir = os.path.join(root, 'data')
 
-# animNumber digits are smaller than animCJK kanji within the shared 1024×1024
-# viewBox, so scale every animNumber entry uniformly to bring full-width ０-９
-# closer to animCJK character size. X is scaled around the canvas x-center; Y
-# is scaled around the digit's natural bottom (y=62 in animNumber data) so the
-# scaled bottom lands at animCJK's typical character bottom (y≈1).
-NUMBER_SCALE = 1.25
+# animNumber digits are placed at Klee One's native size with baseline at
+# animNumber source y=28, so the only transform applied here is a Y translation
+# that maps the digit's natural bottom (y=12 in animNumber data) to animCJK's
+# typical character bottom (y≈1). X is anchored around the canvas x-center.
+NUMBER_SCALE = 1.0
 NUMBER_ORIGIN_X = 512
-NUMBER_BOTTOM_SOURCE = 62
+NUMBER_BOTTOM_SOURCE = 12
 NUMBER_BOTTOM_TARGET = 1
 
 PATH_CMD_SPLIT_RE = re.compile(r'([MLCQZ])')
