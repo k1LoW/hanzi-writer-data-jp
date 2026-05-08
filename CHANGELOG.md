@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.6.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.5.0...v0.6.0) - 2026-05-08
+### New Features
+- feat: add subAnimJ submodule and prefer its kanji entries by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/50
+
 ## [v0.5.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.4.4...v0.5.0) - 2026-05-05
 ### Other Changes
 - chore: update animNumber and switch to NUMBER_SCALE=1.0 (native Klee One size) by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/48
