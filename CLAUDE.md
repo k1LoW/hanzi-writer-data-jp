@@ -17,9 +17,12 @@ vendor/animCJK (git submodule, parsimonhi/animCJK)
   └── graphicsJaKana.txt (hiragana/katakana stroke paths + medians)
 vendor/animNumber (git submodule, k1LoW/animNumber)
   └── graphicsNumber.txt (Arabic numeral 0-9 and full-width ０-９ stroke paths + medians)
+vendor/subAnimJ (git submodule, k1LoW/subAnimJ)
+  └── graphicsJa.txt (kanji modifications tailored for Japanese elementary writing practice)
         │
         ▼
-  stroke_data_parser.py  (animNumber entries are uniformly scaled, see "animNumber scaling")
+  stroke_data_parser.py  (animNumber entries are uniformly scaled, see "animNumber scaling";
+                          subAnimJ entries override animCJK for the same character)
         │
         ▼
   data/*.json (one file per character)
@@ -76,3 +79,4 @@ Multiple licenses apply simultaneously (AND, not OR) to the data. See `licenses/
 - LGPL v3+ (animCJK processing)
 - Unicode License (Unihan DB data)
 - SIL Open Font License 1.1 (Klee One glyph outlines, applies to Arabic numeral 0-9 and full-width ０-９ data via animNumber)
+- Arphic Public License (subAnimJ kanji modifications, derived from animCJK)

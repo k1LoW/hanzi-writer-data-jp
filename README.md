@@ -41,6 +41,10 @@ Some characters may have more strokes in the data than their standard stroke cou
 
 Arabic numeral data (half-width 0-9 and full-width ０-９) comes from [animNumber](https://github.com/k1LoW/animNumber), whose glyphs are based on Klee One. `stroke_data_parser.py` applies a uniform affine transform (`NUMBER_SCALE = 1.0`, anchored at the canvas x-center and at the digit's natural bottom y=12) to every animNumber entry, which is effectively a Y translation that lands each digit's bottom at y≈1 (matching `漢`). The digit height is ≈86% of `漢` so digits and kanji line up visually within the shared 1024×1024 viewBox. The same transform is applied to both `strokes` and `medians`.
 
+## Notes on kanji modifications for Japanese elementary writing practice
+
+A small number of kanji are sourced from [subAnimJ](https://github.com/k1LoW/subAnimJ) instead of animCJK. subAnimJ is a deterministic modification of animCJK's `graphicsJa.txt` tailored for Japanese elementary school writing practice (for example, extending the middle horizontal of `日` / `田` to meet adjacent strokes). When a character exists in both animCJK and subAnimJ, `stroke_data_parser.py` uses the subAnimJ entry.
+
 ## Notes on regenerating data on macOS
 
 Running `python3 stroke_data_parser.py` on macOS produces a working tree diff against many CJK Compatibility Ideograph (U+F900-U+FAFF) JSON files (e.g., `data/侮.json`, `data/海.json`). This is caused by APFS NFC normalizing filenames, so `data/侮.json` (U+F9D6) collides with `data/侮.json` (U+4FAE) on disk. The parser already skips U+F900-U+FAFF entries on macOS to avoid corrupting the Unified Ideograph files, but the existing CI-generated U+F900-U+FAFF files in the repo still appear "modified" locally. These diffs are spurious and should not be committed; only CI on Linux can regenerate them correctly.
@@ -61,3 +65,5 @@ should have received a copy of this license (the file "LGPL.txt") along with
 these files; if not, see <http://www.gnu.org/licenses/>.
 
 Arabic numeral data (half-width 0-9 and full-width ０-９) is derived from [animNumber](https://github.com/k1LoW/animNumber), whose glyph outlines are derived and modified from [Klee One Regular](https://fonts.google.com/specimen/Klee+One) by Fontworks Inc. Klee One is licensed under the [SIL Open Font License, Version 1.1](licenses/OFL.txt).
+
+Modified kanji entries (sourced from [subAnimJ](https://github.com/k1LoW/subAnimJ)) are derived from animCJK and inherit the Arphic Public License.
