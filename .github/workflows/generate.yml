@@ -7,11 +7,13 @@ on:
     paths:
       - vendor/animCJK
       - vendor/animNumber
+      - vendor/subAnimJ
       - stroke_data_parser.py
   pull_request:
     paths:
       - vendor/animCJK
       - vendor/animNumber
+      - vendor/subAnimJ
       - stroke_data_parser.py
   workflow_dispatch:
 
@@ -41,5 +43,5 @@ jobs:
       - name: Commit and push
         uses: suzuki-shunsuke/commit-action@06e3b49d4706498d325d29bd85adc82ecf2f5d8f # v1.0.0
         with:
-          commit_message: "chore: regenerate stroke data from vendor/animCJK and vendor/animNumber"
+          commit_message: "chore: regenerate stroke data from vendor/animCJK, vendor/animNumber and vendor/subAnimJ"
           fail_on_self_push: "false"
