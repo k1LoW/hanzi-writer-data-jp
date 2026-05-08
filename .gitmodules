@@ -4,3 +4,6 @@
 [submodule "vendor/animNumber"]
 	path = vendor/animNumber
 	url = https://github.com/k1LoW/animNumber.git
+[submodule "vendor/subAnimJ"]
+	path = vendor/subAnimJ
+	url = https://github.com/k1LoW/subAnimJ.git
