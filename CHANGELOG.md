@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.8.1](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.8.0...v0.8.1) - 2026-05-25
+### Other Changes
+- docs: clarify submodule init and CI-driven data regeneration in CLAUDE.md by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/60
+- chore: bump subAnimJ submodule by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/62
+
 ## [v0.8.0](https://github.com/k1LoW/hanzi-writer-data-jp/compare/v0.7.0...v0.8.0) - 2026-05-24
 ### Other Changes
 - chore: bump animNumber submodule by @k1LoW in https://github.com/k1LoW/hanzi-writer-data-jp/pull/58
