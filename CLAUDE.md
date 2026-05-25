@@ -60,9 +60,13 @@ The transform is applied to both `strokes` (SVG path numbers) and `medians` (poi
 
 ## Commands
 
-- `python3 stroke_data_parser.py` - Regenerate data/ from vendor/animCJK
-- `npm run serve` - Start local http-server for development
-- `git submodule update --init` - Initialize the animCJK submodule in vendor/
+- `python3 stroke_data_parser.py` - Regenerate data/ from vendor/{animCJK,animNumber,subAnimJ}
+- `npm run serve` - Start local http-server (used to preview demo/index.html)
+- `git submodule update --init --recursive` - Initialize all vendor/ submodules (animCJK, animNumber, subAnimJ)
+
+## CI-driven regeneration
+
+`.github/workflows/generate.yml` re-runs `stroke_data_parser.py` on Linux whenever `vendor/*` submodule pointers or `stroke_data_parser.py` change on `main` or in a PR, then commits the regenerated `data/*.json` back. **In most cases, do not hand-edit or commit `data/*.json` yourself** — bump the submodule (or edit the parser) and let CI regenerate. Manual edits to `data/` are reserved for special cases (e.g., the digit-scaling tuning constants in `stroke_data_parser.py`).
 
 ## macOS / APFS caveat
 
